@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("C:\Users\hp\Desktop\modern-residential-district-with-green-roof-balcony-generated-by-ai_188544-10276.avif"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 20px;
+  }
+  label {
+    font-weight: bold;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  #message {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    color: #ccc;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Enter Data</h2>
+  <p>Please enter the following information:</p>
+  
+  <form id="dataForm" onsubmit="return validateForm()" action="submit_data.php" method="post">
+    <label for="longitude">Longitude:</label><br>
+    <input type="text" id="longitude" name="longitude" required><br>
+    <label for="latitude">Latitude:</label><br>
+    <input type="text" id="latitude" name="latitude" required><br>
+    <label for="housing_median_age">Housing Median Age:</label><br>
+    <input type="text" id="housing_median_age" name="housing_median_age" required><br>
+    <label for="total_rooms">Total Rooms:</label><br>
+    <input type="text" id="total_rooms" name="total_rooms" required><br>
+    <label for="total_bedrooms">Total Bedrooms:</label><br>
+    <input type="text" id="total_bedrooms" name="total_bedrooms" required><br>
+    <label for="population">Population:</label><br>
+    <input type="text" id="population" name="population" required><br>
+    <label for="households">Households:</label><br>
+    <input type="text" id="households" name="households" required><br>
+    <label for="median_income">Median Income:</label><br>
+    <input type="text" id="median_income" name="median_income" required><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <p id="message"></p>
+</div>
+
+<script>
+function validateForm() {
+  // Add your validation logic here if needed
+  // Return false to prevent the form from being submitted if validation fails
+  return true;
+}
+
+document.getElementById("dataForm").addEventListener("submit", function(event) {
+  // Display a disclaimer message before submitting the form
+  var confirmSubmit = confirm("By clicking OK, you are giving your consent to submit this data. Do you want to proceed?");
+  if (!confirmSubmit) {
+    event.preventDefault(); // Prevent form submission if the user cancels
+  } else {
+    // Display a precautionary message
+    document.getElementById("message").innerText = "Please wait while your data is being submitted...";
+  }
+});
+</script>
+
+</body>
